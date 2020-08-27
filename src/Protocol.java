@@ -9,9 +9,17 @@ import java.net.*;
  */
 
 public class Protocol {
-    public static final int BROADCAST_PORT = 0xBBBB;
-    public static final int SERVICE = 0xF3F3;
+    public static final int SERVICE = 0xBBBB;
     public static final byte[] BROADCAST_ADDR = new byte[4];
+
+    public class Host {
+        InetAddress address;
+        int port;
+        public Host(InetAddress address, int port){
+            this.address = address;
+            this.port = port;
+        }
+    }
 
     static {
         for(int i = 0; i < BROADCAST_ADDR.length; ++i){
@@ -23,11 +31,11 @@ public class Protocol {
 
     }
 
-    public void send_broadcast() throws IOException {
+    public void _send_broadcast_() throws IOException {
         InetAddress adds = InetAddress.getByAddress(BROADCAST_ADDR);
         String message = "test";
         DatagramSocket ds = new DatagramSocket();
-        DatagramPacket dp = new DatagramPacket(message.getBytes(),message.length(), adds, BROADCAST_PORT);
+        DatagramPacket dp = new DatagramPacket(message.getBytes(),message.length(), adds, SERVICE);
         ds.send(dp);
         ds.close();
     }
@@ -44,7 +52,7 @@ public class Protocol {
 
     }
 
-    public void sendFile(File file){
+    public void sendFile(InetAddress address, File file){
 
     }
 
