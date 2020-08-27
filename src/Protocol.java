@@ -1,3 +1,4 @@
+import java.io.File;
 import java.io.IOException;
 import java.net.*;
 
@@ -37,5 +38,17 @@ public class Protocol {
         byte[] buf = new byte[1024];
         StringBuffer sbuf = new StringBuffer();
 
+    }
+
+    public void getHosts(){
+
+    }
+
+    public void sendFile(File file){
+
+    }
+
+    public void receiveFile(){
+        
     }
 }
